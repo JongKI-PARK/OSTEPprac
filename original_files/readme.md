@@ -33,7 +33,8 @@ School of Computer Science Engineering, Dankook university , Korea <br>
 
 <br>
 
-**Midterm Exam Schedule**
+**Midterm Exam Schedule** <br>
+April
 
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturaday |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
