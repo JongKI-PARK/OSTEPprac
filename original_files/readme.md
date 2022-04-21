@@ -37,5 +37,5 @@ School of Computer Science Engineering, Dankook university , Korea <br>
 
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturaday |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 17 | 18 | 19 | 20 <br>10:00-10:40 | 21 | 22 | 23 |
-| 24 | 25 | 26 | 27 | 28 | 29 | 30 |
+| 17 | 18 | 19 | <span style="color:red">20</span> <br>10:00-10:40 | 21 <br>9:00-10:30| 22 | 23 <br>9:00-10:00|
+| 24 | 25 <br>7:40-8:40| 26 <br>9:00-10-20| 27 | 28 | 29 | 30 |
