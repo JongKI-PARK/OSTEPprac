@@ -17,16 +17,19 @@ School of Computer Science Engineering, Dankook university , Korea <br>
 - Basic FPGA experiment
 - Sports analysis
 
+<br>
+
 **Keywords of Main interests**
 - Linux 
 - Scheduling
 - Concurrency problems in multi-core systems
 
+<br>
 
 **My Works**
-- ![text](Recursive-Function Optimization.pdf)
-- ![](Pattern recognition prediction to iris data)
-- ![Linux cp command implementation.pdf]
+- [text1](Recursive-Function Optimization.pdf)
+- [text2](Pattern recognition prediction to iris data)
+- [text3](Linux cp command implementation.pdf)
 
 table
 
