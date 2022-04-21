@@ -8,7 +8,7 @@ School of Computer Science Engineering, Dankook university , Korea <br>
 ***
 <br>
 
-**What i'm learning in this semester
+**What i'm learning in this semester**
 - Operating systems
 - Internet Protocol
 - Database
@@ -17,13 +17,13 @@ School of Computer Science Engineering, Dankook university , Korea <br>
 - Basic FPGA experiment
 - Sports analysis
 
-**Keywords of Main interests
+**Keywords of Main interests**
 - Linux 
 - Scheduling
 - Concurrency problems in multi-core systems
 
 
-**My Works
+**My Works**
 - Recursive-Function Optimization
 - Pattern recognition prediction to iris data
 - Linux cp command implementation
