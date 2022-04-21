@@ -7,7 +7,8 @@ School of Computer Science Engineering, Dankook university , Korea <br>
 32181827@dankook.ac.kr <br><br>
 ***
 <br>
-**What i'm learning in this semester
+
+What i'm learning in this semester
 - Operating systems
 - Internet Protocol
 - Database
