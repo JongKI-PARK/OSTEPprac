@@ -24,6 +24,6 @@ School of Computer Science Engineering, Dankook university , Korea <br>
 
 
 **My Works**
-- Recursive-Function Optimization
-- Pattern recognition prediction to iris data
-- Linux cp command implementation
+- ![text](Recursive-Function Optimization.pdf)
+- ![](Pattern recognition prediction to iris data)
+- ![Linux cp command implementation.pdf]
