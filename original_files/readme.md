@@ -8,13 +8,13 @@ School of Computer Science Engineering, Dankook university , Korea <br>
 ***
 <br>
 * **What i'm learning in this semester**
-* Operating systems
-* Internet Protocol
-* Database
-* Auotomata
-* Open source SW 
-* Basic FPGA experiment
-* Sports analysis
+  *Operating systems
+  *Internet Protocol
+  *Database
+  *Auotomata
+  *Open source SW 
+  *Basic FPGA experiment
+  *Sports analysis
 
 Keywords of Main interests
 - Linux 
