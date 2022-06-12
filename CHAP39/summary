@@ -1,5 +1,5 @@
 
-We can make hardlink and softlink by using command "in" <br>
+We can make hardlink and softlink by using command "in" 
 -s option with command "ln" can make file softlink for a file
 
 hardlink : same inode number
