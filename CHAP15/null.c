@@ -1,5 +1,5 @@
 //null.c : creates a pointer to an integer
-//and sets it to NULL and it will try to dereference it
+//sets it to NULL and try to dereference it
 //2022.8.16 park jong ki
 //
 #include <stdio.h>
