@@ -1,5 +1,6 @@
 # OSTEPprac
-OSTEP book homework
+This is mainly for OSTEP book homework 
+Starting from 
 
 ## 1. Introduction
 
