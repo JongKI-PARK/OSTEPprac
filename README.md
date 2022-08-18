@@ -1,15 +1,15 @@
 # OSTEPprac
 OSTEP book homework
 
-## Introduction
+## 1. Introduction
 
-## Virtualization
+## 2. Virtualization
 
 ### CPU Virtualization
 ### Memory Virtualization
 
-## Concurrency
+## 3. Concurrency
 
-## Persistence
+## 4. Persistence
 
-## Furthermore
+## 5. Furthermore
