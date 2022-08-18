@@ -1,6 +1,6 @@
 # OSTEPprac
 This is mainly for OSTEP book homework <br/>
-* MAR. 27. 2022 ~ * <br/>
+*MAR. 27. 2022 ~ * <br/>
 
 ## 1. Introduction
 
