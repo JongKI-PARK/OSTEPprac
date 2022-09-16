@@ -104,9 +104,7 @@ Let's make sure it's right
   Stats: IO Busy  5 (45.45%)
   ```
 
-
-
-
+<br><br><br>
 
 **3. Switch the order of the processes: `process-run.py -l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right).**
 
@@ -148,9 +146,7 @@ Let's check if it is yields cpu(interrupt) or busy waiting(polling)
   
   **Instead of polling the device repeatedly, put the calling process 0 to sleep, and context switch to process 1.** <br>  
 
-
-
-
+<br><br><br>
 
 **4. We’ll now explore some of the other flags. One important flag is -S, which determines how the system reacts when a process issues an I/O. With the flag set to SWITCH_ON_END, the system will NOT switch to another process while one is doing I/O, instead waiting until the process is completely finished. What happens when you run the following two processes (-l 1:0,4:100 -c -S SWITCH_ON_END), one doing I/O and the other doing CPU work?**
   
@@ -173,10 +169,8 @@ Let's check if it is yields cpu(interrupt) or busy waiting(polling)
   
 **A : If flag SWITCH_ON_END is on with -S option, cpu is busy waiting. It requires more cpu time compared to the preemptive way with same workload**
 
+<br><br><br>
 
-  
-  
-  
 **5. Now, run the same processes, but with the switching behavior set to switch to another process whenever one is WAITING for I/O (-l 1:0,4:100 -c -S SWITCH_ON_IO). What happens now? Use -c and -p to confirm that you are right.**
 
   ```
@@ -193,10 +187,8 @@ Let's check if it is yields cpu(interrupt) or busy waiting(polling)
   
 **Result of question 5 is same as that of question 3. SWITCH_ON_IO with -S option is the default option**
 
-  
-  
-  
-  
+<br><br><br>
+
 **6. One other important behavior is what to do when an I/O completes. With -I IO_RUN_LATER, when an I/O completes, the process that issued it is not necessarily run right away; rather, whatever was running at the time keeps running. What happens when you run this combination of processes? (Run ./process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH_ON_IO -I IO_RUN_LATER -c -p) Are system resources being effectively utilized?**
 
   ```
@@ -241,9 +233,7 @@ Let's check if it is yields cpu(interrupt) or busy waiting(polling)
   
 **A : Not really. Process 0 has three I/O operations to deal with. Except for the first one, the rest of two operations of process 0 are delayed.**
 
-
-
-
+<br><br><br>
 
 **7. Now run the same processes, but with -I IO_RUN_IMMEDIATE set, which immediately runs the process that issued the I/O. How does this behavior differ? Why might running a process that just completed an I/O again be a good idea?**
 
@@ -279,7 +269,8 @@ Let's check if it is yields cpu(interrupt) or busy waiting(polling)
   
 **A : Through the IO_RUN_IMMEDIATE flag of the -I option, process 0 with I/O work can be continuously executed immediately. While process 0 was performing I/O operations, tasks using cpu were scheduled, and as a result, cpu utilization was increased. An analysis of CPU usage time(through Status section) shows that the processor was used much more efficiently than question 6.**
 
-  
+<br><br><br>
+
 **8. Now run with some randomly generated processes: -s 1 -l 3:50,3:50 or -s 2 -l 3:50,3:50 or -s 3 -l 3:50,3:50. See if you can predict how the trace will turn out. What happens when you use the flag -I IO_RUN_IMMEDIATE vs. -I IO_RUN_LATER? What happens when you use -S SWITCH_ON_IO vs. -S SWITCH_ON_END**
   
   ```
