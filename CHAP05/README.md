@@ -1,4 +1,10 @@
 
+# Notice
+P
+
+# Homework (simulation)
+P
+
 1. After fork() system call , values are independent between parant and child process.
 
 2. Child process duplicates parant process' file descriptor. But they share file table connected to inode.
