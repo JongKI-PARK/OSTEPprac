@@ -59,7 +59,7 @@ Stats: IO Busy  0 (0.00%)
 ```
 
 <br>
-**2. Now run with these flags: ./process-run.py `-l 4:100,1:0`. These flags specify one process with 4 instructions (all to use the CPU), and one that simply issues an I/O and waits for it to be done. How long does it take to complete both processes? Use -c and -p to find out if you were right.**
+**2. Now run with these flags: ./process-run.py ``-l 4:100,1:0``. These flags specify one process with 4 instructions (all to use the CPU), and one that simply issues an I/O and waits for it to be done. How long does it take to complete both processes? Use -c and -p to find out if you were right.**
 
 If no value is given through the -L option, the default time required for I/O is 5.  
 
@@ -84,7 +84,7 @@ If no value is given through the -L option, the default time required for I/O is
   **A : 4(Process 0 doing CPU busy works) + 1(Process 1 before I/O operation) + 5(Process 1 doing I/O) + 1(Process 1 after I/O operation) = 11 (I/O operation must be started from cpu operation)**
 
 <br>
-**3. Switch the order of the processes: `-l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right)**
+**3. Switch the order of the processes: ``-l 1:0,4:100``. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right)**
 
 
 **A : **
