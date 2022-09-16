@@ -104,7 +104,7 @@ Let's make sure it's right
   ```
   
 
-**3. Switch the order of the processes: `process-run.py -l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right) 
+**3. Switch the order of the processes: `process-run.py -l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right).**
 
   ```
   $ python3 process-run.py -l 1:0,4:100
@@ -182,11 +182,8 @@ Let's check if it is preemptive or not
   7*   RUN:io_done          DONE             1          
   ```
   
-**A : **
+**Result of question 5 is same as that of question 3. SWITCH_ON_IO with -S option is the default option**
 
-Let's make sure it's right
-  ```
-  ```
   
 **6. One other important behavior is what to do when an I/O completes. With -I IO_RUN_LATER, when an I/O completes, the process that issued it is not necessarily run right away; rather, whatever was running at the time keeps running. What happens when you run this combination of processes? (Run ./process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH_ON_IO -I IO_RUN_LATER -c -p) Are system resources being effectively utilized?**
 
@@ -230,11 +227,8 @@ Let's make sure it's right
   Stats: IO Busy  15 (48.39%)
   ```
   
-**A : **
+**A : Not really. Process 0 has three I/O operations to deal with. Except for the first one, the rest of two operations of process 0 are delayed.**
 
-Let's make sure it's right
-  ```
-  ```
   
 **7. Now run the same processes, but with -I IO_RUN_IMMEDIATE set, which immediately runs the process that issued the I/O. How does this behavior differ? Why might running a process that just completed an I/O again be a good idea?**
 
@@ -268,11 +262,8 @@ Let's make sure it's right
   Stats: IO Busy  15 (71.43%)
   ```
   
-**A : **
+**A : Through the IO_RUN_IMMEDIATE flag of the -I option, process 0 with I/O work can be continuously executed immediately. While process 0 was performing I/O operations, tasks using cpu were scheduled, and as a result, cpu utilization was increased. An analysis of CPU usage time(through Status section) shows that the processor was used much more efficiently than question 6.**
 
-Let's make sure it's right
-  ```
-  ```
   
 **8. Now run with some randomly generated processes: -s 1 -l 3:50,3:50 or -s 2 -l 3:50,3:50 or -s 3 -l 3:50,3:50. See if you can predict how the trace will turn out. What happens when you use the flag -I IO_RUN_IMMEDIATE vs. -I IO_RUN_LATER? What happens when you use -S SWITCH_ON_IO vs. -S SWITCH_ON_END**
   
