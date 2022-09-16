@@ -14,11 +14,16 @@ Chapter 2
 ## 2. Virtualization
 
 ### CPU Virtualization
+Chapter 3 to Chapter 11
+
 ### Memory Virtualization
+Chapter 12 to Chapter24
 
 ## 3. Concurrency
+Chapter 25 to Chapter34
 
 ## 4. Persistence
+Chapter 35 to Chapter 46
 
 ## 5. Furthermore
 
