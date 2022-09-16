@@ -59,6 +59,9 @@ Stats: IO Busy  0 (0.00%)
 ```
 
 
+
+
+
 **2. Now run with these flags: `process-run.py -l 4:100,1:0`. These flags specify one process with 4 instructions (all to use the CPU), and one that simply issues an I/O and waits for it to be done. How long does it take to complete both processes? Use -c and -p to find out if you were right.**
 
 If no value is given through the -L option, the default time required for I/O is 5.  
@@ -102,7 +105,10 @@ Let's make sure it's right
   Stats: CPU Busy 6 (54.55%)
   Stats: IO Busy  5 (45.45%)
   ```
-  
+
+
+
+
 
 **3. Switch the order of the processes: `process-run.py -l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right).**
 
@@ -124,9 +130,9 @@ Let's make sure it's right
     After IOs, the process issuing the IO will run LATER (when it is its turn)
   ```
 
-**A : if the scheduling is preemptive, process 0 will yield cpu while doing i/o. If not, process 0 will do busy waiting keep checking if process 0's i/o work is done.**
+**A : It is important to figure it out whether process 0 yields cpu while doing i/o or busy waiting keep checking if process 0's i/o work is done.**
 
-Let's check if it is preemptive or not
+Let's check if it is yields cpu(interrupt) or busy waiting(polling)
   ```
   Time        PID: 0        PID: 1           CPU           IOs
   1         RUN:io         READY             1          
@@ -142,7 +148,10 @@ Let's check if it is preemptive or not
   Stats: IO Busy  5 (71.43%)
   ```
   
-  **As you see it is preemptive way in scheduling with no options (default) <br>  
+  **Instead of polling the device repeatedly, put the calling process 0 to sleep, and context switch to process 1.** <br>  
+
+
+
 
 
 **4. We’ll now explore some of the other flags. One important flag is -S, which determines how the system reacts when a process issues an I/O. With the flag set to SWITCH_ON_END, the system will NOT switch to another process while one is doing I/O, instead waiting until the process is completely finished. What happens when you run the following two processes (-l 1:0,4:100 -c -S SWITCH_ON_END), one doing I/O and the other doing CPU work?**
@@ -168,6 +177,8 @@ Let's check if it is preemptive or not
 
 
   
+  
+  
 **5. Now, run the same processes, but with the switching behavior set to switch to another process whenever one is WAITING for I/O (-l 1:0,4:100 -c -S SWITCH_ON_IO). What happens now? Use -c and -p to confirm that you are right.**
 
   ```
@@ -184,6 +195,9 @@ Let's check if it is preemptive or not
   
 **Result of question 5 is same as that of question 3. SWITCH_ON_IO with -S option is the default option**
 
+  
+  
+  
   
 **6. One other important behavior is what to do when an I/O completes. With -I IO_RUN_LATER, when an I/O completes, the process that issued it is not necessarily run right away; rather, whatever was running at the time keeps running. What happens when you run this combination of processes? (Run ./process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH_ON_IO -I IO_RUN_LATER -c -p) Are system resources being effectively utilized?**
 
@@ -229,7 +243,10 @@ Let's check if it is preemptive or not
   
 **A : Not really. Process 0 has three I/O operations to deal with. Except for the first one, the rest of two operations of process 0 are delayed.**
 
-  
+
+
+
+
 **7. Now run the same processes, but with -I IO_RUN_IMMEDIATE set, which immediately runs the process that issued the I/O. How does this behavior differ? Why might running a process that just completed an I/O again be a good idea?**
 
   ```
@@ -273,10 +290,3 @@ Let's check if it is preemptive or not
   ```
   
 **A : **
-
-Let's make sure it's right
-  ```
-  $ python3 process-run.py -s 1 -l 3:50,3:50 -I IO_RUN_IMMEDIATE
-  
-  ```
-  
