@@ -95,8 +95,8 @@ Let's make sure it's right
   7           DONE       WAITING                           1
   8           DONE       WAITING                           1
   9           DONE       WAITING                           1
- 10           DONE       WAITING                           1
- 11*          DONE   RUN:io_done             1          
+ 10          DONE       WAITING                           1
+ 11*         DONE   RUN:io_done             1          
 
   Stats: Total Time 11
   Stats: CPU Busy 6 (54.55%)
@@ -156,8 +156,8 @@ Let's make sure it's right
   7*   RUN:io_done         READY             1          
   8           DONE       RUN:cpu             1          
   9           DONE       RUN:cpu             1          
- 10           DONE       RUN:cpu             1          
- 11           DONE       RUN:cpu             1          
+ 10          DONE       RUN:cpu             1          
+ 11          DONE       RUN:cpu             1          
 
   ```
   
@@ -202,28 +202,28 @@ Let's make sure it's right
   7*         READY          DONE       RUN:cpu         READY             1          
   8          READY          DONE       RUN:cpu         READY             1          
   9          READY          DONE       RUN:cpu         READY             1          
- 10          READY          DONE       RUN:cpu         READY             1          
- 11          READY          DONE       RUN:cpu         READY             1          
- 12          READY          DONE          DONE       RUN:cpu             1          
- 13          READY          DONE          DONE       RUN:cpu             1          
- 14          READY          DONE          DONE       RUN:cpu             1          
- 15          READY          DONE          DONE       RUN:cpu             1          
- 16          READY          DONE          DONE       RUN:cpu             1          
- 17    RUN:io_done          DONE          DONE          DONE             1          
- 18         RUN:io          DONE          DONE          DONE             1          
- 19        WAITING          DONE          DONE          DONE                           1
- 20        WAITING          DONE          DONE          DONE                           1
- 21        WAITING          DONE          DONE          DONE                           1
- 22        WAITING          DONE          DONE          DONE                           1
- 23        WAITING          DONE          DONE          DONE                           1
- 24*   RUN:io_done          DONE          DONE          DONE             1          
- 25         RUN:io          DONE          DONE          DONE             1          
- 26        WAITING          DONE          DONE          DONE                           1
- 27        WAITING          DONE          DONE          DONE                           1
- 28        WAITING          DONE          DONE          DONE                           1
- 29        WAITING          DONE          DONE          DONE                           1
- 30        WAITING          DONE          DONE          DONE                           1
- 31*   RUN:io_done          DONE          DONE          DONE             1          
+ 10         READY          DONE       RUN:cpu         READY             1          
+ 11         READY          DONE       RUN:cpu         READY             1          
+ 12         READY          DONE          DONE       RUN:cpu             1          
+ 13         READY          DONE          DONE       RUN:cpu             1          
+ 14         READY          DONE          DONE       RUN:cpu             1          
+ 15         READY          DONE          DONE       RUN:cpu             1          
+ 16         READY          DONE          DONE       RUN:cpu             1          
+ 17   RUN:io_done          DONE          DONE          DONE             1          
+ 18        RUN:io          DONE          DONE          DONE             1          
+ 19       WAITING          DONE          DONE          DONE                           1
+ 20       WAITING          DONE          DONE          DONE                           1
+ 21       WAITING          DONE          DONE          DONE                           1
+ 22       WAITING          DONE          DONE          DONE                           1
+ 23       WAITING          DONE          DONE          DONE                           1
+ 24*  RUN:io_done          DONE          DONE          DONE             1          
+ 25        RUN:io          DONE          DONE          DONE             1          
+ 26       WAITING          DONE          DONE          DONE                           1
+ 27       WAITING          DONE          DONE          DONE                           1
+ 28       WAITING          DONE          DONE          DONE                           1
+ 29       WAITING          DONE          DONE          DONE                           1
+ 30       WAITING          DONE          DONE          DONE                           1
+ 31*  RUN:io_done          DONE          DONE          DONE             1          
 
   Stats: Total Time 31
   Stats: CPU Busy 21 (67.74%)
@@ -250,18 +250,18 @@ Let's make sure it's right
   7*   RUN:io_done          DONE         READY         READY             1          
   8         RUN:io          DONE         READY         READY             1          
   9        WAITING          DONE       RUN:cpu         READY             1             1
- 10        WAITING          DONE       RUN:cpu         READY             1             1
- 11        WAITING          DONE       RUN:cpu         READY             1             1
- 12        WAITING          DONE       RUN:cpu         READY             1             1
- 13        WAITING          DONE       RUN:cpu         READY             1             1
- 14*   RUN:io_done          DONE          DONE         READY             1          
- 15         RUN:io          DONE          DONE         READY             1          
- 16        WAITING          DONE          DONE       RUN:cpu             1             1
- 17        WAITING          DONE          DONE       RUN:cpu             1             1
- 18        WAITING          DONE          DONE       RUN:cpu             1             1
- 19        WAITING          DONE          DONE       RUN:cpu             1             1
- 20        WAITING          DONE          DONE       RUN:cpu             1             1
- 21*   RUN:io_done          DONE          DONE          DONE             1          
+ 10       WAITING          DONE       RUN:cpu         READY             1             1
+ 11       WAITING          DONE       RUN:cpu         READY             1             1
+ 12       WAITING          DONE       RUN:cpu         READY             1             1
+ 13       WAITING          DONE       RUN:cpu         READY             1             1
+ 14*  RUN:io_done          DONE          DONE         READY             1          
+ 15        RUN:io          DONE          DONE         READY             1          
+ 16       WAITING          DONE          DONE       RUN:cpu             1             1
+ 17       WAITING          DONE          DONE       RUN:cpu             1             1
+ 18       WAITING          DONE          DONE       RUN:cpu             1             1
+ 19       WAITING          DONE          DONE       RUN:cpu             1             1
+ 20       WAITING          DONE          DONE       RUN:cpu             1             1
+ 21*  RUN:io_done          DONE          DONE          DONE             1          
 
   Stats: Total Time 21
   Stats: CPU Busy 21 (100.00%)
