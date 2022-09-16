@@ -2,7 +2,7 @@
 # Notice
 Program `process-run.py` is from https://github.com/remzi-arpacidusseau/ostep-homework/tree/master/cpu-intro  
 see more details in https://github.com/remzi-arpacidusseau/ostep-homework/blob/master/cpu-intro/README.md  
-
+question 4, 5 is closely related to chaper 36 (36.4 Lowering CPU Overhead with Interrupts) polling and interrupt in handling i/o job  
 
 # Homework (simulation)
 With process-run.py , you can see the process state as it runs on the CPU. 
@@ -103,8 +103,8 @@ Let's make sure it's right
   Stats: IO Busy  5 (45.45%)
   ```
   
-<br>
-**3. Switch the order of the processes:`process-run.py -l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right)**
+
+**3. Switch the order of the processes: `process-run.py -l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right) 
 
   ```
   $ python3 process-run.py -l 1:0,4:100
@@ -124,9 +124,9 @@ Let's make sure it's right
     After IOs, the process issuing the IO will run LATER (when it is its turn)
   ```
 
-**A : **
+**A : if the scheduling is preemptive, process 0 will yield cpu while doing i/o. If not, process 0 will do busy waiting keep checking if process 0's i/o work is done.**
 
-Let's make sure it's right
+Let's check if it is preemptive or not
   ```
   Time        PID: 0        PID: 1           CPU           IOs
   1         RUN:io         READY             1          
@@ -142,7 +142,10 @@ Let's make sure it's right
   Stats: IO Busy  5 (71.43%)
   ```
   
-**4. We’ll now explore some of the other flags. One important flag is -S, which determines how the system reacts when a process issues an I/O. With the flag set to SWITCH ON END, the system will NOT switch to another process while one is doing I/O, instead waiting until the process is completely finished. What happens when you run the following two processes (-l 1:0,4:100 -c -S SWITCH_ON_END), one doing I/O and the other doing CPU work?**
+  **As you see it is preemptive way in scheduling with no options (default) <br>  
+
+
+**4. We’ll now explore some of the other flags. One important flag is -S, which determines how the system reacts when a process issues an I/O. With the flag set to SWITCH_ON_END, the system will NOT switch to another process while one is doing I/O, instead waiting until the process is completely finished. What happens when you run the following two processes (-l 1:0,4:100 -c -S SWITCH_ON_END), one doing I/O and the other doing CPU work?**
   
   ```
   $ python3 process-run.py -l 1:0,4:100 -c -S SWITCH_ON_END
@@ -161,12 +164,9 @@ Let's make sure it's right
 
   ```
   
-**A : **
+**A : If flag SWITCH_ON_END is on with -S option, cpu is busy waiting. It requires more cpu time compared to the preemptive way with same workload**
 
-Let's make sure it's right
-  ```
-  
-  ```
+
   
 **5. Now, run the same processes, but with the switching behavior set to switch to another process whenever one is WAITING for I/O (-l 1:0,4:100 -c -S SWITCH_ON_IO). What happens now? Use -c and -p to confirm that you are right.**
 
