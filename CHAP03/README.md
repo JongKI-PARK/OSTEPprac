@@ -8,10 +8,11 @@ see more details in https://github.com/remzi-arpacidusseau/ostep-homework/blob/m
 With process-run.py , you can see the process state as it runs on the CPU. 
 Process can have four different states(RUNNING, READY, WAITING, DONE) in this code.
 
+
 **1. Run `process-run.py` with the following flags: `-l 5:100,5:100`. What should the CPU utilization be (e.g., the percent of time the CPU is in use?) 
 Why do you know this? Use the -c and -p flags to see if you were right.**
 
-Flag `5:100` means that process has 5 instructions and all instructions are 100% CPU instructions
+Flag `-l 5:100` means that process has 5 instructions and all instructions are 100% CPU instructions
 
   ```
   $ python3 process-run.py -l 5:100,5:100
@@ -57,11 +58,15 @@ Stats: CPU Busy 10 (100.00%)
 Stats: IO Busy  0 (0.00%)
 ```
 
-**2. Now run with these flags: ./process-run.py -l 4:100,1:0. These flags specify one process with 4 instructions (all to use the
+
+**2. Now run with these flags: `./process-run.py -l 4:100,1:0`. These flags specify one process with 4 instructions (all to use the
 CPU), and one that simply issues an I/O and waits for it to be done. How long does it take to complete both processes? Use -c and -p
 to find out if you were right.**
 
+If no value is given through the -L option, the default time required for I/O is 5.  
+
   ```
+  $ python3 process-run.py -l 4:100,1:0
   Produce a trace of what would happen when you run these processes:
   Process 0
     cpu
@@ -78,4 +83,5 @@ to find out if you were right.**
     After IOs, the process issuing the IO will run LATER (when it is its turn)
   ```
   
-  A : 
+  **A : 4(Process 0 doing CPU busy works) + 1(Process 1 before I/O operation) + 5(Process 1 doing I/O) + 1(Process 1 after I/O operation) = 10**
+  **I/O operation must be started from cpu operation**
