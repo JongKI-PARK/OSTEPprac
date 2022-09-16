@@ -48,7 +48,7 @@ A :
   7           DONE       RUN:cpu             1          
   8           DONE       RUN:cpu             1          
   9           DONE       RUN:cpu             1          
- 10           DONE       RUN:cpu             1          
+  10           DONE       RUN:cpu             1          
 
 Stats: Total Time 10
 Stats: CPU Busy 10 (100.00%)
