@@ -58,8 +58,8 @@ Stats: CPU Busy 10 (100.00%)
 Stats: IO Busy  0 (0.00%)
 ```
 
-<br>
-**2. Now run with these flags:`./process-run.py -l 4:100,1:0`. These flags specify one process with 4 instructions (all to use the CPU), and one that simply issues an I/O and waits for it to be done. How long does it take to complete both processes? Use -c and -p to find out if you were right.**
+
+**2. Now run with these flags: `process-run.py -l 4:100,1:0`. These flags specify one process with 4 instructions (all to use the CPU), and one that simply issues an I/O and waits for it to be done. How long does it take to complete both processes? Use -c and -p to find out if you were right.**
 
 If no value is given through the -L option, the default time required for I/O is 5.  
 
@@ -85,10 +85,26 @@ If no value is given through the -L option, the default time required for I/O is
 
 Let's make sure it's right
   ```
+  Time        PID: 0        PID: 1           CPU           IOs
+  1        RUN:cpu         READY             1          
+  2        RUN:cpu         READY             1          
+  3        RUN:cpu         READY             1          
+  4        RUN:cpu         READY             1          
+  5           DONE        RUN:io             1          
+  6           DONE       WAITING                           1
+  7           DONE       WAITING                           1
+  8           DONE       WAITING                           1
+  9           DONE       WAITING                           1
+ 10           DONE       WAITING                           1
+ 11*          DONE   RUN:io_done             1          
+
+  Stats: Total Time 11
+  Stats: CPU Busy 6 (54.55%)
+  Stats: IO Busy  5 (45.45%)
   ```
   
 <br>
-**3. Switch the order of the processes:`-l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right)**
+**3. Switch the order of the processes:`process-run.py -l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use -c and -p to see if you were right)**
 
   ```
   $ python3 process-run.py -l 1:0,4:100
