@@ -60,11 +60,11 @@ parant      child
 
 **8. Write a program that creates two children, and connects the standard output of one to the standard input of the other, using the pipe() system call**
 
-A: 
+A: 'fork8.c` is for question 8. Through pipe(), two process can communicate. fd[0] (write() in child process) ------> fd[1] (read() in parant process)  
+If you create a pipe before a fork(), there is only one pipe, and each process (parent and child) will have a file descriptor referring to each end of the pipe (because the child naturally inherits the file descriptors of the parent). In this situation the processes can communicate by writing to / reading from alternate ends of the pipe.
 
 <br><br><br>
 
-# Conclusion
+# References  
 
-3. After pipe() two file descriptors are returned.
-Because of 2 and 3, for IPC (Inter Process Communication), pipe() should be called before fork().
+[1] https://stackoverflow.com/questions/49520567/what-exactly-happens-when-you-create-a-pipe-after-a-fork-command
