@@ -12,7 +12,7 @@ P
 
 **2. Write a program that opens a file (with the open() system call) and then calls fork() to create a new process. Can both the child and parent access the file descriptor returned by open()? What happens when they are writing to the file concurrently, i.e., at the same time?**
 
-**A: `fork2.c` is for question 2. Both parent and Child process can access the file descripter. The file descripter they access is the same. The process scheduler determines which of the parent or child processes to run first.**
+**A: `fork2.c` is for question 2. Both parent and Child process can access the file descripter. The file descripter they access is the same. Child process duplicates parant process' file descriptor. But they share file table connected to inode. The process scheduler determines which of the parent or child processes to run first.**
 
 <br><br><br>
 
@@ -53,9 +53,6 @@ P
 <br><br><br>
 
 # Conclusion
-1. After fork() system call , values are independent between parant and child process.
-
-2. Child process duplicates parant process' file descriptor. But they share file table connected to inode.
 
 3. After pipe() two file descriptors are returned.
 Because of 2 and 3, for IPC (Inter Process Communication), pipe() should be called before fork().
