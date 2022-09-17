@@ -12,25 +12,25 @@ P
 
 **2. Write a program that opens a file (with the open() system call) and then calls fork() to create a new process. Can both the child and parent access the file descriptor returned by open()? What happens when they are writing to the file concurrently, i.e., at the same time?**
 
-**A: **
+**A: `fork2.c` is for question 2. Both parent and Child process can access the file descripter. The file descripter they access is the same. The process scheduler determines which of the parent or child processes to run first.**
 
 <br><br><br>
 
 **3. Write another program using fork(). The child process should print “hello”; the parent process should print “goodbye”. You should try to ensure that the child process always prints first; can you do this without calling wait() in the parent?**
 
-**A: **
+**A: ??**
 
 <br><br><br>
 
 **4. Write a program that calls fork() and then calls some form of exec() to run the program /bin/ls. See if you can try all of the variants of exec(), including (on Linux) execl(), execle(), execlp(), execv(), execvp(), and execvpe(). Why do you think there are so many variants of the same basic call?**
 
-**A: **
+**A: ??**
 
 <br><br><br>
 
 **5. Now write a program that uses wait() to wait for the child process to finish in the parent. What does wait() return? What happens if you use wait() in the child?**
 
-**A: **
+**A: `fork5.c` and `fork5_1.c` is for question 5. If child process uses wait(), it returns error -1. If parent process uses wait(), it returns child process's pid.**
 
 <br><br><br>
 
