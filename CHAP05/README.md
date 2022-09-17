@@ -50,7 +50,7 @@ A: `fork7.c` is for question 7. If child process closes standard output(STDOUT_F
 parant      child  
  ___         ___  
 | 0 |       | 0 |  
-| 1 |  <del>| 1 |</del>  
+| 1 |       <del>| 1 |</del>  
 | 2 |       | 2 |  
 | 3 |       | 3 |  
 | ~ |       | ~ |  
