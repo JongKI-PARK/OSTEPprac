@@ -30,7 +30,7 @@ A: ??
 
 **5. Now write a program that uses wait() to wait for the child process to finish in the parent. What does wait() return? What happens if you use wait() in the child?**
 
-A: `fork5.c` and `fork5_1.c` is for question 5. If child process uses wait(), it returns error -1. If parent process uses wait(), it returns child process's pid.
+A: `fork5.c` and `fork5_1.c` is for question 5. If child process uses wait(), it returns error -1. If parent process uses wait(), it returns child process's pid. (wait() system call is made for parant process waiting for child process to be terminated. So when child process uses wait() it returns -1)
 
 <br><br><br>
 
@@ -56,6 +56,3 @@ A:
 
 3. After pipe() two file descriptors are returned.
 Because of 2 and 3, for IPC (Inter Process Communication), pipe() should be called before fork().
-
-4. Wait system call is made for parant process waiting for child process to be terminated.
-So when child process uses wait() it returns -1
