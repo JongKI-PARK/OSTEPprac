@@ -45,11 +45,12 @@ A:
 A: `fork7.c` is for question 7. If child process closes standard output(STDOUT_FILENO), result of printf() in child process will not show on terminal. However, the stdout of the file descriptor table of the parent process is independent of the stdout of the file descriptor table of the child process.
 
 <pre>
-file descripter table  
+<b>file descripter table</b>  
+
 parant      child  
  ___         ___  
 | 0 |       | 0 |  
-| 1 |     ~~| 1 |~~  
+| 1 |  <del>| 1 |</del>  
 | 2 |       | 2 |  
 | 3 |       | 3 |  
 | ~ |       | ~ |  
