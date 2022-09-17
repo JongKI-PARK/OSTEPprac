@@ -40,9 +40,19 @@ A:
 
 <br><br><br>
 
-**7. Write a program that creates a child process, and then in the child closes standard output (STDOUT FILENO). What happens if the child calls printf() to print some output after closing the descriptor?**
+**7. Write a program that creates a child process, and then in the child closes standard output (STDOUT_FILENO). What happens if the child calls printf() to print some output after closing the descriptor?**
 
-A: 
+A: `fork7.c` is for question 7. If child process closes standard output(STDOUT_FILENO), result of printf() in child process will not show on terminal. However, the stdout of the file descriptor table of the parent process is independent of the stdout of the file descriptor table of the child process.
+
+file descripter table
+parant      child
+ ___         ___
+| 0 |       | 0 |
+| 1 |     ~~| 1 |~~
+| 2 |       | 2 |
+| 3 |       | 3 |
+| ~ |       | ~ |
+
 
 <br><br><br>
 
