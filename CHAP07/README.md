@@ -1,9 +1,14 @@
 
 # Notice
 
+Source code `scheduler.py` is from https://github.com/remzi-arpacidusseau/ostep-homework/tree/master/cpu-sched.  
+See more details about this program in https://github.com/remzi-arpacidusseau/ostep-homework/blob/master/cpu-sched/README.md  
+In `schduler.py` FIFO, SJF, and RR schedulers are implemented inside.  
+
 # Homework(simulation)
 
 **1. Compute the response time and turnaround time when running three jobs of length 200 with the SJF and FIFO schedulers.**  
+
 
 **2. Now do the same but with jobs of different lengths: 100, 200, and 300.**
 
