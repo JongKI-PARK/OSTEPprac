@@ -13,7 +13,10 @@ A : `free.txt` is for question 1. By `$ man free > free.txt`, `free.txt` is made
 
   ```
   $ free
-  
+                total        used        free      shared  buff/cache   available
+  Mem:       24487976      543264    22021184       47624     1923528    23521436
+  Swap:       8388604           0     8388604
+
   ```
 
 <br><br><br>
@@ -30,5 +33,6 @@ A : `free.txt` is for question 1. By `$ man free > free.txt`, `free.txt` is made
 
 **8. Finally, let’s run pmap on your memory-user program, with different amounts of used memory. What do you see here? Does the output from pmap match your expectations?**
 
+# Furthermore
 
 # References
