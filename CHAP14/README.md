@@ -1,16 +1,28 @@
 
 # Notice
 
-Chapter 14 aims to become familiar with memory allocation and tools such as gdb and valgring related to memory allocation  
+Chapter 14 aims to become familiar with memory allocation and tools such as gdb and valgrind related to memory allocation  
 
 # Homework
 
 **1. First, write a simple program called null.c that creates a pointer to an integer, sets it to NULL, and then tries to dereference it. Compile this into an executable called null. What happens when you run this program?**  
 
+A : `null.c` is for question 1. When i execute this, a segmentation fault is generated.  
+
+<br><br>  
 
 **2. Next, compile this program with symbol information included (with the -g flag). Doing so let’s put more information into the executable, enabling the debugger to access more useful information about variable names and the like. Run the program under the debugger by typing gdb null and then, once gdb is running, typing
 run. What does gdb show you?**  
 
+A : gdb shows 
+  ```
+    Program recieved signal SIGSEGV, Segmentation fault.
+    0x000055555555513d in main () at null.c:10
+    10    int i = *pointer;
+    (gdb)
+  ```
+  
+<br><br>  
 
 **3. Finally, use the valgrind tool on this program. We’ll use the memcheck tool that is a part of valgrind to analyze what happens. Run this by typing in the following: valgrind --leak-check=yes null. What happens when you run this? Can you interpret the output from the tool?**  
 
