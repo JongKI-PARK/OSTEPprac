@@ -168,7 +168,22 @@ A :  `malloc2.c` is for question 6. It tries to access which is inaccessable(alr
 
 **7. Now pass a funny value to free (e.g., a pointer in the middle of the array you allocated above). What happens? Do you need tools to find this type of problem?**  
 
-A :  
+A : `funfree.c` is for question 7. 
+  ```
+  $ ./funfree
+  free(): invalid pointer
+  Aborted (core dumped)
+  ```
+  
+  running gdb shows 
+  ```
+  (gdb) run 
+  Starting program: /home/kipark/OSTEPprac/CHAP14/funfree
+  free(): invalid pointer
+  
+  Program recieved signal SIGABORT, Aborted
+  
+  ```
   
 <br><br>  
 
