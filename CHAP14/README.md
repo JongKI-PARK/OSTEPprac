@@ -104,7 +104,7 @@ A :  `nofree.c` is for question 4. When running gdb, it didn't seem to find any 
 **5. Write a program that creates an array of integers called data of size 100 using malloc; then, set data[100] to zero. What happens when you run this program? What happens when you run this program using valgrind? Is the program correct?**  
 
 A : `malloc100.c` is for question 5. malloc100.c tries to access inaccessable memory location. Nothing happens when i run this program.
-    valgrind shows that there is an invalid write of size 4. See the result of `valgrind --leak-check=yes ./a.out`  
+    valgrind shows that there is an invalid write of size 4. See the result of `valgrind --leak-check=yes ./a.out` below.
     ```
     ==147002== Memcheck, a memory error detector
     ==147002== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
