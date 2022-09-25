@@ -134,7 +134,7 @@ A : `malloc100.c` is for question 5. malloc100.c tries to access inaccessable me
 **6. Create a program that allocates an array of integers (as above), frees them, and then tries to print the value of one of the elements of the array. Does the program run? What happens when you use valgrind on it?**  
 
 A :  `malloc2.c` is for question 6. It tries to access which is inaccessable(already freed memory space which is invalid access).
-  When running this program, it shows normal result `The data in pointer[10] is 100` as if it was valid access.
+  When running this program, it shows normal result `The data in pointer[10] is 100` as if it was valid access called dangling pointer.
   Using valgrind shows more precise results.
   
   ```
@@ -185,6 +185,40 @@ A : `funfree.c` is for question 7.
   
   ```
   
+  running valgrind shows
+  ```
+  ==148402== Memcheck, a memory error detector
+  ==148402== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+  ==148402== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+  ==148402== Command: ./funfree
+  ==148402==
+  ==148402== Invalid free() / delete / delete[] / realloc()
+  ==148402==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+  ==148402==    by 0x10919C: main (funfree.c:13)
+  ==148402==  Address 0x4a54108 is 200 bytes inside a block of size 400 alloc'd
+  ==148402==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+  ==148402==    by 0x10917E: main (funfree.c:10)
+  ==148402==
+  ==148402==
+  ==148402== HEAP SUMMARY:
+  ==148402==     in use at exit: 400 bytes in 1 blocks
+  ==148402==   total heap usage: 1 allocs, 1 frees, 400 bytes allocated
+  ==148402==
+  ==148402== 400 bytes in 1 blocks are definitely lost in loss record 1 of 1
+  ==148402==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+  ==148402==    by 0x10917E: main (funfree.c:10)
+  ==148402==
+  ==148402== LEAK SUMMARY:
+  ==148402==    definitely lost: 400 bytes in 1 blocks
+  ==148402==    indirectly lost: 0 bytes in 0 blocks
+  ==148402==      possibly lost: 0 bytes in 0 blocks
+  ==148402==    still reachable: 0 bytes in 0 blocks
+  ==148402==         suppressed: 0 bytes in 0 blocks
+  ==148402==
+  ==148402== For lists of detected and suppressed errors, rerun with: -s
+  ==148402== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+  ```
+  
 <br><br>  
 
 **8. Try out some of the other interfaces to memory allocation. For example, create a simple vector-like data structure and related routines that use realloc() to manage the vector. Use an array to store the vectors elements; when a user adds an entry to the vector, use realloc() to allocate more space for it. How well does such a vector perform? How does it compare to a linked list? Use valgrind to help you find bugs.**  
@@ -195,4 +229,11 @@ A :
 
 **9. Spend more time and read about using gdb and valgrind. Knowing your tools is critical; spend the time and learn how to become an expert debugger in the UNIX and C environment.**  
 
-A :  
+“Using Valgrind to Detect Undefined Value Errors with Bit-precision” by J. Seward, N.Nethercote. USENIX ’05.
+https://www.usenix.org/conference/2005-usenix-annual-technical-conference/using-valgrind-detect-undefined-value-errors-bit  
+
+
+# Furthermore
+
+malloc() and free() are not system calls, but rather library calls. Thus malloc library manages space within your virtual address space, but itself is build on top of some system calls which call into the OS to ask for more memory or release some back to the system.  
+One such system call is called `brk` , which is used to change the location of the program break : the location of the end of the heap.
