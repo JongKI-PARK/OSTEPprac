@@ -105,6 +105,7 @@ A :  `nofree.c` is for question 4. When running gdb, it didn't seem to find any 
 
 A : `malloc100.c` is for question 5. malloc100.c tries to access inaccessable memory location. Nothing happens when i run this program.
     valgrind shows that there is an invalid write of size 4. See the result of valgrind below.  
+  
   ```
   ==147002== Memcheck, a memory error detector
   ==147002== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
@@ -126,7 +127,7 @@ A : `malloc100.c` is for question 5. malloc100.c tries to access inaccessable me
   ==147002==
   ==147002== For lists of detected and suppressed errors, rerun with: -s
   ==147002== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-    ```
+  ```
   
 <br><br>  
 
