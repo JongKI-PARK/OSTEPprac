@@ -72,7 +72,7 @@ A :  `nofree.c` is for question 4. When running gdb, it didn't seem to find any 
   (gdb)
   ```
   
-  but in valgrind, it gives the following results. It shows that there was a memory leakage which was allocated but not freed 4bytes.
+  but in valgrind, it gives the following results. It shows that there was a memory leakage which was allocated but not freed 4bytes.  
   ```
   ==137756== Memcheck, a memory error detector
   ==137756== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
@@ -104,28 +104,28 @@ A :  `nofree.c` is for question 4. When running gdb, it didn't seem to find any 
 **5. Write a program that creates an array of integers called data of size 100 using malloc; then, set data[100] to zero. What happens when you run this program? What happens when you run this program using valgrind? Is the program correct?**  
 
 A : `malloc100.c` is for question 5. malloc100.c tries to access inaccessable memory location. Nothing happens when i run this program.
-    valgrind shows that there is an invalid write of size 4. See the result of `valgrind --leak-check=yes ./a.out` below.
-    ```
-    ==147002== Memcheck, a memory error detector
-    ==147002== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-    ==147002== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-    ==147002== Command: ./a.out
-    ==147002==
-    ==147002== Invalid write of size 4
-    ==147002==    at 0x10918D: main (in /home/kipark/OST/CHAP15/a.out)
-    ==147002==  Address 0x4a541d0 is 0 bytes after a block of size 400 alloc'd
-    ==147002==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    ==147002==    by 0x10917E: main (in /home/kipark/OST/CHAP15/a.out)
-    ==147002==
-    ==147002==
-    ==147002== HEAP SUMMARY:
-    ==147002==     in use at exit: 0 bytes in 0 blocks
-    ==147002==   total heap usage: 1 allocs, 1 frees, 400 bytes allocated
-    ==147002==
-    ==147002== All heap blocks were freed -- no leaks are possible
-    ==147002==
-    ==147002== For lists of detected and suppressed errors, rerun with: -s
-    ==147002== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+    valgrind shows that there is an invalid write of size 4. See the result of `valgrind --leak-check=yes ./a.out` below.  
+  ```
+  ==147002== Memcheck, a memory error detector
+  ==147002== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+  ==147002== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+  ==147002== Command: ./a.out
+  ==147002==
+  ==147002== Invalid write of size 4
+  ==147002==    at 0x10918D: main (in /home/kipark/OST/CHAP15/a.out)
+  ==147002==  Address 0x4a541d0 is 0 bytes after a block of size 400 alloc'd
+  ==147002==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+  ==147002==    by 0x10917E: main (in /home/kipark/OST/CHAP15/a.out)
+  ==147002==
+  ==147002==
+  ==147002== HEAP SUMMARY:
+  ==147002==     in use at exit: 0 bytes in 0 blocks
+  ==147002==   total heap usage: 1 allocs, 1 frees, 400 bytes allocated
+  ==147002==
+  ==147002== All heap blocks were freed -- no leaks are possible
+  ==147002==
+  ==147002== For lists of detected and suppressed errors, rerun with: -s
+  ==147002== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
     ```
   
 <br><br>  
@@ -133,10 +133,39 @@ A : `malloc100.c` is for question 5. malloc100.c tries to access inaccessable me
 **6. Create a program that allocates an array of integers (as above), frees them, and then tries to print the value of one of the elements of the array. Does the program run? What happens when you use valgrind on it?**  
 
 A :  `malloc2.c` is for question 6. It tries to access which is inaccessable(already freed memory space which is invalid access).
+  When running this program, it shows normal result `The data in pointer[10] is 100` as if it was valid access.
+  Using valgrind shows more precise results.
   
+  ```
+  ==147243== Memcheck, a memory error detector
+  ==147243== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+  ==147243== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+  ==147243== Command: ./a.out
+  ==147243==
+  ==147243== Invalid read of size 4
+  ==147243==    at 0x1091E0: main (in /home/kipark/OST/CHAP15/a.out)
+  ==147243==  Address 0x4a54068 is 40 bytes inside a block of size 400 free'd
+  ==147243==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+  ==147243==    by 0x1091DB: main (in /home/kipark/OST/CHAP15/a.out)
+  ==147243==  Block was alloc'd at
+  ==147243==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+  ==147243==    by 0x10919E: main (in /home/kipark/OST/CHAP15/a.out)
+  ==147243==
+  The data in pointer[10] is 100
+  ==147243==
+  ==147243== HEAP SUMMARY:
+  ==147243==     in use at exit: 0 bytes in 0 blocks
+  ==147243==   total heap usage: 2 allocs, 2 frees, 1,424 bytes allocated
+  ==147243==
+  ==147243== All heap blocks were freed -- no leaks are possible
+  ==147243==
+  ==147243== For lists of detected and suppressed errors, rerun with: -s
+  ==147243== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+```
+
 <br><br>  
 
-**7. Now pass a funny value to free (e.g., a pointer in the middle of thearray you allocated above). What happens? Do you need tools to find this type of problem?**  
+**7. Now pass a funny value to free (e.g., a pointer in the middle of the array you allocated above). What happens? Do you need tools to find this type of problem?**  
 
 A :  
   
