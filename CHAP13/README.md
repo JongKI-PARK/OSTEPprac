@@ -54,7 +54,42 @@ A : `man pmap` see `man_pmap.txt`. According to the manual of pmap,
 
 <br><br><br>
 
-**6. To use pmap, you have to know the process ID of the process you’re interested in. Thus, first run ps auxw to see a list of all processes; then, pick an interesting one, such as a browser. You can also use your memory-user program in this case (indeed, you can even have that program call getpid() and print out its PID for your convenience).**
+**6. To use pmap, you have to know the process ID of the process you’re interested in. Thus, first run `ps auxw` to see a list of all processes; then, pick an interesting one, such as a browser. You can also use your memory-user program in this case (indeed, you can even have that program call getpid() and print out its PID for your convenience).**
+
+A : I used `ps auxw | grep memory-user` to find out pid.
+
+  ```
+  $ ps auxw | grep memory-user
+  kipark    166078 68.8  0.0 104892  1412 pts/0    R+   14:11   0:38 ./memory-user 100 0
+  kipark    166087  0.0  0.0   6432   720 pts/1    S+   14:12   0:00 grep --color=auto memory-user
+  $ pmap 166078
+  166078:   ./memory-user 100 0
+  000055ce91b2f000      4K r---- memory-user
+  000055ce91b30000      4K r-x-- memory-user
+  000055ce91b31000      4K r---- memory-user
+  000055ce91b32000      4K r---- memory-user
+  000055ce91b33000      4K rw--- memory-user
+  000055ce93032000    132K rw---   [ anon ]
+  00007f3df954c000 102404K rw---   [ anon ]
+  00007f3dff94d000    136K r---- libc-2.31.so
+  00007f3dff96f000   1504K r-x-- libc-2.31.so
+  00007f3dffae7000    312K r---- libc-2.31.so
+  00007f3dffb35000     16K r---- libc-2.31.so
+  00007f3dffb39000      8K rw--- libc-2.31.so
+  00007f3dffb3b000     24K rw---   [ anon ]
+  00007f3dffb56000      4K r---- ld-2.31.so
+  00007f3dffb57000    140K r-x-- ld-2.31.so
+  00007f3dffb7a000     32K r---- ld-2.31.so
+  00007f3dffb83000      4K r---- ld-2.31.so
+  00007f3dffb84000      4K rw--- ld-2.31.so
+  00007f3dffb85000      4K rw---   [ anon ]
+  00007ffcf73a4000    132K rw---   [ stack ]
+  00007ffcf73ec000     12K r----   [ anon ]
+  00007ffcf73ef000      4K r-x--   [ anon ]
+  ffffffffff600000      4K --x--   [ anon ]
+  total           104896K
+  ```
+The result shows  
 
 <br><br><br>
 
