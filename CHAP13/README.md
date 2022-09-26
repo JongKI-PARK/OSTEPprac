@@ -95,6 +95,12 @@ The result shows
 
 **7. Now run pmap on some of these processes, using various flags (like -X) to reveal many details about the process. What do you see? How many different entities make up a modern address space, as opposed to our simple conception of code/stack/heap?**
 
+A : 
+  
+<br><br><br>
+
+**8. Finally, let’s run pmap on your memory-user program, with different amounts of used memory. What do you see here? Does the output from pmap match your expectations?**
+
 A : More details are shown by `pmap -x option`. See below.
   ```
   $ ps auxw | grep memory-user
@@ -129,14 +135,13 @@ A : More details are shown by `pmap -x option`. See below.
   ---------------- ------- ------- -------
   total kB          104896    1448      88
   ```
-  More detailed result shows that 
+  More detailed result to pmap ./memory-user 100 0 shows that 
   
 <br><br><br>
-
-**8. Finally, let’s run pmap on your memory-user program, with different amounts of used memory. What do you see here? Does the output from pmap match your expectations?**
 
 # Furthermore
 
 # References
 [1] https://unix.stackexchange.com/questions/105604/the-meaning-of-output-of-pmap  
 [2] https://stackoverflow.com/questions/28461302/malloc-anonymous-mapping-and-magic-area  
+[3] https://man7.org/linux/man-pages/man1/pmap.1.html  
