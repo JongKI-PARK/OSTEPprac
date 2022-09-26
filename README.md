@@ -36,3 +36,7 @@ Chapter 35 to Chapter 46
 ## 5. Furthermore
 
 ## 6. References
+
+[1] Operating Systems: Three Easy Pieces Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau (University of Wisconsin-Madison)
+[2] Kerrisk, Michael - The Linux programming interface a Linux und UNIX system programming handbook-No Starch Press (2018)
+[3] 
