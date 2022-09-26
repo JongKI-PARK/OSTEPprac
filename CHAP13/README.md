@@ -95,6 +95,42 @@ The result shows
 
 **7. Now run pmap on some of these processes, using various flags (like -X) to reveal many details about the process. What do you see? How many different entities make up a modern address space, as opposed to our simple conception of code/stack/heap?**
 
+A : More details are shown by `pmap -x option`. See below.
+  ```
+  $ ps auxw | grep memory-user
+  kipark    166168 66.2  0.0 104892  1448 pts/0    R+   14:24   0:02 ./memory-user 100 0
+  kipark    166172  0.0  0.0   6432   724 pts/1    S+   14:24   0:00 grep --color=auto memory-user
+  $ pmap -x 166168
+  166168:   ./memory-user 100 0
+  Address           Kbytes     RSS   Dirty Mode  Mapping
+  00005613f6192000       4       4       0 r---- memory-user
+  00005613f6193000       4       4       0 r-x-- memory-user
+  00005613f6194000       4       4       0 r---- memory-user
+  00005613f6195000       4       4       4 r---- memory-user
+  00005613f6196000       4       4       4 rw--- memory-user
+  00005613f7316000     132       4       4 rw---   [ anon ]
+  00007f23b0a60000  102404       4       4 rw---   [ anon ]
+  00007f23b6e61000     136     136       0 r---- libc-2.31.so
+  00007f23b6e83000    1504     884       0 r-x-- libc-2.31.so
+  00007f23b6ffb000     312     148       0 r---- libc-2.31.so
+  00007f23b7049000      16      16      16 r---- libc-2.31.so
+  00007f23b704d000       8       8       8 rw--- libc-2.31.so
+  00007f23b704f000      24      20      20 rw---   [ anon ]
+  00007f23b706a000       4       4       0 r---- ld-2.31.so
+  00007f23b706b000     140     140       0 r-x-- ld-2.31.so
+  00007f23b708e000      32      32       0 r---- ld-2.31.so
+  00007f23b7097000       4       4       4 r---- ld-2.31.so
+  00007f23b7098000       4       4       4 rw--- ld-2.31.so
+  00007f23b7099000       4       4       4 rw---   [ anon ]
+  00007fffcc2f6000     132      16      16 rw---   [ stack ]
+  00007fffcc3f7000      12       0       0 r----   [ anon ]
+  00007fffcc3fa000       4       4       0 r-x--   [ anon ]
+  ffffffffff600000       4       0       0 --x--   [ anon ]
+  ---------------- ------- ------- -------
+  total kB          104896    1448      88
+  ```
+  More detailed result shows that 
+  
 <br><br><br>
 
 **8. Finally, let’s run pmap on your memory-user program, with different amounts of used memory. What do you see here? Does the output from pmap match your expectations?**
@@ -102,3 +138,5 @@ The result shows
 # Furthermore
 
 # References
+[1] https://unix.stackexchange.com/questions/105604/the-meaning-of-output-of-pmap  
+[2] https://stackoverflow.com/questions/28461302/malloc-anonymous-mapping-and-magic-area  
