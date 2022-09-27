@@ -49,7 +49,11 @@ See more details about this program in https://github.com/remzi-arpacidusseau/os
   OR write down that it is an out-of-bounds address (a segmentation violation). For
   this problem, you should assume a simple virtual address space of a given size.
   ```
-  physical memory...................................
+  VA 0 : Invalid  
+  VA 1 : VALID (Physical address : bound + offset = 0x0000363c + 0x00000105 = 0x00003741)  
+  VA 2 : Invalid  
+  VA 3 : Invalid  
+  VA 4 : Invalid   
   
   ```
   $ python3 relocation.py --seed=2
@@ -75,6 +79,12 @@ See more details about this program in https://github.com/remzi-arpacidusseau/os
   this problem, you should assume a simple virtual address space of a given size.
   ```
   
+  VA 0 : Valid (Physical address : 0x00003ca9 + 0x00000039 = 0x00003ce2)  
+  VA 1 : Valid (Physical address : 0x00003ca9 + 0x00000056 = 0x00003cff)  
+  VA 2 : Invalid  
+  VA 3 : Invalid  
+  VA 4 : Invalid  
+
 <br><br><br>
 
 **2. Run with these flags: -s 0 -n 10. What value do you have set -l (the bounds register) to in order to ensure that all the generated virtual addresses are within bounds?**
