@@ -73,10 +73,6 @@ See more details about this program in https://github.com/remzi-arpacidusseau/os
     VA  2: 0x00000357 (decimal:  855) --> PA or segmentation violation?
     VA  3: 0x000002f1 (decimal:  753) --> PA or segmentation violation?
     VA  4: 0x000002ad (decimal:  685) --> PA or segmentation violation?
-
-  For each virtual address, either write down the physical address it translates to
-  OR write down that it is an out-of-bounds address (a segmentation violation). For
-  this problem, you should assume a simple virtual address space of a given size.
   ```
   
   VA 0 : Valid (Physical address : 0x00003ca9 + 0x00000039 = 0x00003ce2)  
@@ -84,6 +80,31 @@ See more details about this program in https://github.com/remzi-arpacidusseau/os
   VA 2 : Invalid  
   VA 3 : Invalid  
   VA 4 : Invalid  
+
+  ```
+  $ python3 relocation.py -s 3
+
+  ARG seed 3
+  ARG address space size 1k
+  ARG phys mem size 16k
+
+  Base-and-Bounds register information:
+
+    Base   : 0x000022d4 (decimal 8916)
+    Limit  : 316
+
+  Virtual Address Trace
+    VA  0: 0x0000017a (decimal:  378) --> PA or segmentation violation?
+    VA  1: 0x0000026a (decimal:  618) --> PA or segmentation violation?
+    VA  2: 0x00000280 (decimal:  640) --> PA or segmentation violation?
+    VA  3: 0x00000043 (decimal:   67) --> PA or segmentation violation?
+    VA  4: 0x0000000d (decimal:   13) --> PA or segmentation violation?
+  ```
+  VA 0 :  
+  VA 1 :   
+  VA 2 :  
+  VA 3 :  
+  VA 4 :  
 
 <br><br><br>
 
@@ -113,7 +134,7 @@ A : The result with -s 0 -n 10 flags
     VA  9: 0x00000204 (decimal:  516) --> SEGMENTATION VIOLATION
   ```
 
-if all these virtual addresses to be valid, the value for the flag -l needs to be bigger than the maximum offset 929.
+If all these virtual addresses to be valid, the value for the flag -l needs to be bigger than the maximum offset 929.
 
 <br><br><br>
 
