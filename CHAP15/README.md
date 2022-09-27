@@ -87,7 +87,33 @@ See more details about this program in https://github.com/remzi-arpacidusseau/os
 
 <br><br><br>
 
-**2. Run with these flags: -s 0 -n 10. What value do you have set -l (the bounds register) to in order to ensure that all the generated virtual addresses are within bounds?**
+**2. Run with these flags: `-s 0 -n 10`. What value do you have set -l (the bounds register) to in order to ensure that all the generated virtual addresses are within bounds?**
+
+A : The result with -s 0 -n 10 flags 
+  ``` 
+  ARG seed 0
+  ARG address space size 1k
+  ARG phys mem size 16k
+
+  Base-and-Bounds register information:
+
+    Base   : 0x00003082 (decimal 12418)
+    Limit  : 472
+
+  Virtual Address Trace
+    VA  0: 0x000001ae (decimal:  430) --> VALID: 0x00003230 (decimal: 12848)
+    VA  1: 0x00000109 (decimal:  265) --> VALID: 0x0000318b (decimal: 12683)
+    VA  2: 0x0000020b (decimal:  523) --> SEGMENTATION VIOLATION
+    VA  3: 0x0000019e (decimal:  414) --> VALID: 0x00003220 (decimal: 12832)
+    VA  4: 0x00000322 (decimal:  802) --> SEGMENTATION VIOLATION
+    VA  5: 0x00000136 (decimal:  310) --> VALID: 0x000031b8 (decimal: 12728)
+    VA  6: 0x000001e8 (decimal:  488) --> SEGMENTATION VIOLATION
+    VA  7: 0x00000255 (decimal:  597) --> SEGMENTATION VIOLATION
+    VA  8: 0x000003a1 (decimal:  929) --> SEGMENTATION VIOLATION
+    VA  9: 0x00000204 (decimal:  516) --> SEGMENTATION VIOLATION
+  ```
+
+if all these virtual addresses to be valid, the value for the flag -l needs to be bigger than the maximum offset 929.
 
 <br><br><br>
 
