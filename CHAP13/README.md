@@ -50,7 +50,10 @@ after :
 
 **5. Let’s try one more tool, known as pmap. Spend some time, and read the pmap manual page in detail.**
 
-A : `man pmap` see `man_pmap.txt`. According to the manual of pmap, 
+A : `man pmap` see `man_pmap.txt`. According to the manual of pmap, refernces [1], [2], [3] and [4], one line in pmap print for a contiguous mapping of each hardware translation page size(unit of 4KB).  
+Virtual addresses are displayed in ascending order.  
+For anaonymous memory(anon), it is reported for the process heap, stack, 'copy on write' pages with mappings mapped with MAP_PRIVATE.  
+'total' at the bottom of the results in pmap, shows the process's total logical memory size.  
 
 <br><br><br>
 
