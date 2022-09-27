@@ -145,3 +145,4 @@ A : More details are shown by `pmap -x option`. See below.
 [1] https://unix.stackexchange.com/questions/105604/the-meaning-of-output-of-pmap  
 [2] https://stackoverflow.com/questions/28461302/malloc-anonymous-mapping-and-magic-area  
 [3] https://man7.org/linux/man-pages/man1/pmap.1.html  
+[4] https://docs.oracle.com/cd/E19683-01/816-0210/6m6nb7mhj/index.html  
