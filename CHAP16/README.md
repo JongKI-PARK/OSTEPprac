@@ -1,8 +1,8 @@
 
 # Notice
 
-Source code relocation.py is from 
-See more details about this program 
+Source code `segmentation.py` is from https://github.com/remzi-arpacidusseau/ostep-homework/tree/master/vm-segmentation  
+See more details about this program in https://github.com/remzi-arpacidusseau/ostep-homework/blob/master/vm-segmentation/README.md  
 
 # Homework
 
