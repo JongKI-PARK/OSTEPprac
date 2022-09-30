@@ -112,6 +112,7 @@ See more details about this program in https://github.com/remzi-arpacidusseau/os
 
 A : The result with -s 0 -n 10 flags 
   ``` 
+  $ python3 relocation.py -s 0 -n 10
   ARG seed 0
   ARG address space size 1k
   ARG phys mem size 16k
@@ -138,8 +139,32 @@ If all these virtual addresses to be valid, the value for the flag -l needs to b
 
 <br><br><br>
 
-**3. Run with these flags: -s 1 -n 10 -l 100. What is the maximum value that base can be set to, such that the address space still fits into physical memory in its entirety?**
+**3. Run with these flags: `-s 1 -n 10 -l 100`. What is the maximum value that base can be set to, such that the address space still fits into physical memory in its entirety?**
 
+A : The result with -s 1 -n 10 -l 100 flags
+  ```  
+  ARG seed 1
+  ARG address space size 1k
+  ARG phys mem size 16k
+
+  Base-and-Bounds register information:
+
+    Base   : 0x00000899 (decimal 2201)
+    Limit  : 100
+
+  Virtual Address Trace
+    VA  0: 0x00000363 (decimal:  867) --> PA or segmentation violation?
+    VA  1: 0x0000030e (decimal:  782) --> PA or segmentation violation?
+    VA  2: 0x00000105 (decimal:  261) --> PA or segmentation violation?
+    VA  3: 0x000001fb (decimal:  507) --> PA or segmentation violation?
+    VA  4: 0x000001cc (decimal:  460) --> PA or segmentation violation?
+    VA  5: 0x0000029b (decimal:  667) --> PA or segmentation violation?
+    VA  6: 0x00000327 (decimal:  807) --> PA or segmentation violation?
+    VA  7: 0x00000060 (decimal:   96) --> PA or segmentation violation?
+    VA  8: 0x0000001d (decimal:   29) --> PA or segmentation violation?
+    VA  9: 0x00000357 (decimal:  855) --> PA or segmentation violation?
+  ```
+  
 <br><br><br>
 
 **4. Run some of the same problems above, but with larger address spaces (-a) and physical memories (-p).**
