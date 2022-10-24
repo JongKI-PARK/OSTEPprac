@@ -1,17 +1,17 @@
 
-# Notice
+# Interlude : Memory API
 
 Chapter 14 aims to become familiar with memory allocation and tools such as gdb and valgrind related to memory allocation  
 
-# Homework
+## Homework
 
-**1. First, write a simple program called null.c that creates a pointer to an integer, sets it to NULL, and then tries to dereference it. Compile this into an executable called null. What happens when you run this program?**  
+> **1. First, write a simple program called null.c that creates a pointer to an integer, sets it to NULL, and then tries to dereference it. Compile this into an executable called null. What happens when you run this program?**  
 
-A : `null.c` is for question 1. When i execute this, a segmentation fault is generated.  
+A : `null.c` is for question 1. When i execute this, segmentation fault is generated.  
 
 <br><br>  
 
-**2. Next, compile this program with symbol information included (with the -g flag). Doing so let’s put more information into the executable, enabling the debugger to access more useful information about variable names and the like. Run the program under the debugger by typing gdb null and then, once gdb is running, typing
+> **2. Next, compile this program with symbol information included (with the -g flag). Doing so let’s put more information into the executable, enabling the debugger to access more useful information about variable names and the like. Run the program under the debugger by typing gdb null and then, once gdb is running, typing
 run. What does gdb show you?**  
 
 A : gdb shows 
@@ -24,7 +24,7 @@ A : gdb shows
   
 <br><br>  
 
-**3. Finally, use the valgrind tool on this program. We’ll use the memcheck tool that is a part of valgrind to analyze what happens. Run this by typing in the following: valgrind --leak-check=yes null. What happens when you run this? Can you interpret the output from the tool?**  
+> **3. Finally, use the valgrind tool on this program. We’ll use the memcheck tool that is a part of valgrind to analyze what happens. Run this by typing in the following: valgrind --leak-check=yes null. What happens when you run this? Can you interpret the output from the tool?**  
 
 A : Using the valgrind tool `valgrind --leak-check=yes ./null` gives the following results:  
   It says that there was no memory leakage but there was "Invalid read of size 4" (invalid access)  
@@ -62,7 +62,7 @@ A : Using the valgrind tool `valgrind --leak-check=yes ./null` gives the followi
 
 <br><br>  
 
-**4. Write a simple program that allocates memory using malloc() but forgets to free it before exiting. What happens when this program runs? Can you use gdb to find any problems with it? How about valgrind (again with the --leak-check=yes flag)?**  
+> **4. Write a simple program that allocates memory using malloc() but forgets to free it before exiting. What happens when this program runs? Can you use gdb to find any problems with it? How about valgrind (again with the --leak-check=yes flag)?**  
 
 A :  `nofree.c` is for question 4. When running gdb, it didn't seem to find any errors.
   ```
@@ -101,7 +101,7 @@ A :  `nofree.c` is for question 4. When running gdb, it didn't seem to find any 
   
 <br><br>  
 
-**5. Write a program that creates an array of integers called data of size 100 using malloc; then, set data[100] to zero. What happens when you run this program? What happens when you run this program using valgrind? Is the program correct?**  
+> **5. Write a program that creates an array of integers called data of size 100 using malloc; then, set data[100] to zero. What happens when you run this program? What happens when you run this program using valgrind? Is the program correct?**  
 
 A : `malloc100.c` is for question 5. malloc100.c tries to access inaccessable memory location. Nothing happens when i run this program.
     valgrind shows that there is an invalid write of size 4. See the result of valgrind below.  
@@ -131,7 +131,7 @@ A : `malloc100.c` is for question 5. malloc100.c tries to access inaccessable me
   
 <br><br>  
 
-**6. Create a program that allocates an array of integers (as above), frees them, and then tries to print the value of one of the elements of the array. Does the program run? What happens when you use valgrind on it?**  
+> **6. Create a program that allocates an array of integers (as above), frees them, and then tries to print the value of one of the elements of the array. Does the program run? What happens when you use valgrind on it?**  
 
 A :  `malloc2.c` is for question 6. It tries to access which is inaccessable(already freed memory space which is invalid access).
   When running this program, it shows normal result `The data in pointer[10] is 100` as if it was valid access called dangling pointer.
@@ -166,7 +166,7 @@ A :  `malloc2.c` is for question 6. It tries to access which is inaccessable(alr
 
 <br><br>  
 
-**7. Now pass a funny value to free (e.g., a pointer in the middle of the array you allocated above). What happens? Do you need tools to find this type of problem?**  
+> **7. Now pass a funny value to free (e.g., a pointer in the middle of the array you allocated above). What happens? Do you need tools to find this type of problem?** 
 
 A : `funfree.c` is for question 7. 
   ```
@@ -221,19 +221,60 @@ A : `funfree.c` is for question 7.
   
 <br><br>  
 
-**8. Try out some of the other interfaces to memory allocation. For example, create a simple vector-like data structure and related routines that use realloc() to manage the vector. Use an array to store the vectors elements; when a user adds an entry to the vector, use realloc() to allocate more space for it. How well does such a vector perform? How does it compare to a linked list? Use valgrind to help you find bugs.**  
+> **8. Try out some of the other interfaces to memory allocation. For example, create a simple vector-like data structure and related routines that use realloc() to manage the vector. Use an array to store the vectors elements; when a user adds an entry to the vector, use realloc() to allocate more space for it. How well does such a vector perform? How does it compare to a linked list? Use valgrind to help you find bugs.**  
 
-A :  
-  
+A : `realloc.c` is for question 8. When I tried to free() both the pointer to the array that was initially allocated with malloc() and the pointer to the array whose size was changed with realloc(), I get a "double free detected in tcache2 Aborted(core dumped)" message, even though the addresses of the two arrays are different.  
+
+The result from `valgrind --leak-check=yes ./realloc shows that no leaks are possible. Here is the result of valgrind.  
+
+  ```
+  $ valgrind --leak-check=yes ./realloc
+   ==247160== Memcheck, a memory error detector
+  ==247160== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+  ==247160== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+  ==247160== Command: ./a.out
+  ==247160==
+  Array's Address before calling relloc() : 0x4a54040
+    Content of the newly allocated array
+  new_pointer[0] = 0
+  new_pointer[1] = 1
+  new_pointer[2] = 2
+  new_pointer[3] = 3
+  new_pointer[4] = 4
+  new_pointer[5] = 5
+  new_pointer[6] = 6
+  new_pointer[7] = 7
+  new_pointer[8] = 8
+  new_pointer[9] = 9
+  new_pointer[10] = 990
+    Existing memory address : 0x4a54040
+    New memory address     : 0x4a544f0
+  ==247160==
+  ==247160== HEAP SUMMARY:
+  ==247160==     in use at exit: 0 bytes in 0 blocks
+  ==247160==   total heap usage: 3 allocs, 3 frees, 5,064 bytes allocated
+  ==247160==
+  ==247160== All heap blocks were freed -- no leaks are possible
+  ==247160==
+  ==247160== For lists of detected and suppressed errors, rerun with: -s
+  ==247160== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+  ```
+
 <br><br>  
 
-**9. Spend more time and read about using gdb and valgrind. Knowing your tools is critical; spend the time and learn how to become an expert debugger in the UNIX and C environment.**  
+> **9. Spend more time and read about using gdb and valgrind. Knowing your tools is critical; spend the time and learn how to become an expert debugger in the UNIX and C environment.**  
 
 “Using Valgrind to Detect Undefined Value Errors with Bit-precision” by J. Seward, N.Nethercote. USENIX ’05.
 https://www.usenix.org/conference/2005-usenix-annual-technical-conference/using-valgrind-detect-undefined-value-errors-bit  
 
+<br><br>
 
-# Furthermore
+## Furthermore
 
 malloc() and free() are not system calls, but rather library calls. Thus malloc library manages space within your virtual address space, but itself is build on top of some system calls which call into the OS to ask for more memory or release some back to the system.  
 One such system call is called `brk` , which is used to change the location of the program break : the location of the end of the heap.
+
+## References
+[1] https://stackoverflow.com/questions/35190326/warning-ignoring-return-value-of-realloc-declared-with-attribute-warn-unused  
+[2] https://www.geeksforgeeks.org/g-fact-66/  
+[3] Using Valgrind to Detect Undefined Value Errors with Bit-precision” by J. Seward, N.Nethercote. USENIX ’05.  
