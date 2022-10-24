@@ -272,7 +272,9 @@ https://www.usenix.org/conference/2005-usenix-annual-technical-conference/using-
 ## Furthermore
 
 malloc() and free() are not system calls, but rather library calls. Thus malloc library manages space within your virtual address space, but itself is build on top of some system calls which call into the OS to ask for more memory or release some back to the system.  
-One such system call is called `brk` , which is used to change the location of the program break : the location of the end of the heap.
+One such system call is called `brk` , which is used to change the location of the program break : the location of the end of the heap.  
+<br>
+You can also get memory from the operating system using mmap() . mmap() creates an anonymous memory area in the program. Anonymous area refers to the area connected to the swap space without being associated with a specific file.  
 
 ## References
 [1] https://stackoverflow.com/questions/35190326/warning-ignoring-return-value-of-realloc-declared-with-attribute-warn-unused  
