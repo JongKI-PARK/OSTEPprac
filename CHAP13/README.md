@@ -32,7 +32,7 @@ A : `memroy-user.c` is for question 3.
 
 <br><br>
 
-**4. Now, while running your memory-user program, also (in a different terminal window, but on the same machine) run the free tool. How do the memory usage totals change when your program is running? How about when you kill the memory-user program? Do the numbers match your expectations? Try this for different amounts of memory usage. What happens when you use really large amounts of memory?**
+> **4. Now, while running your memory-user program, also (in a different terminal window, but on the same machine) run the free tool. How do the memory usage totals change when your program is running? How about when you kill the memory-user program? Do the numbers match your expectations? Try this for different amounts of memory usage. What happens when you use really large amounts of memory?**
 
 A: Command to terminal `$ memory-user 100 0`  
 before : 
@@ -49,11 +49,11 @@ after :
   Mem:          23914         552       20244          46        3117       22923
   Swap:          8191           0        8191
   ```
-  I allocated 100MB memory for this program but `free` shows that system only used 1MB. 
+I allocated 100MB memory for this program but `free` shows that system only used 1MB. 
   
 <br><br>
 
-**5. Let’s try one more tool, known as pmap. Spend some time, and read the pmap manual page in detail.**
+> **5. Let’s try one more tool, known as pmap. Spend some time, and read the pmap manual page in detail.**
 
 A : `man pmap` see `man_pmap.txt`. According to the manual of pmap, refernces [1], [2], [3] and [4], one line in pmap print for a contiguous mapping of each hardware translation page size(unit of 4KB).  
 Virtual addresses are displayed in ascending order.  
@@ -97,7 +97,7 @@ A : I used `ps auxw | grep memory-user` to find out pid.
   ffffffffff600000      4K --x--   [ anon ]
   total           104896K
   ```
-The result shows  
+The result shows ~.  
 
 <br><br>
 
@@ -143,7 +143,7 @@ A : More details are shown by `pmap -x option`. See below.
   ---------------- ------- ------- -------
   total kB          104896    1448      88
   ```
-  More detailed result to pmap ./memory-user 100 0 shows that 
+  More detailed result to pmap ./memory-user 100 0 shows that ~.  
   
 <br><br><br>
 
