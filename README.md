@@ -24,10 +24,10 @@ Chapter 2
 ### CPU Virtualization
 Chapter 3 to Chapter 11
 
-Chapter13 
-TODO problem 6, 7, 8 pmap????아직 정확히 모르겠음  
+Chapter13 problem 6, 7, 8 pmap????아직 정확히 모르겠음  
 
-Chapter14 clear  
+Chapter14 clear  나중에 mmap() 간단하게 사용해볼것 furthermore 부분에 추가하면 좋을 듯  
+
 
 ### Memory Virtualization
 Chapter 12 to Chapter24
