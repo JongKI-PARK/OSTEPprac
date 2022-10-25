@@ -1,6 +1,6 @@
 # Mechanism : Address Translation
 
-VM을 통한 abstraction을 위해서는 주소변환이 필요하다. 주소변환에 효율성을 높이는 동시에 protection(control)을 유지하기 위해서는 하드웨어 지원이 필요하다. 처음에는 몇개의 레지스터만 사용하는 정도부터 TLB, Page table 등 점차 복잡한 하드웨어 자원들을 활용하게 된다. 하드웨어의 도움들을 받지만 하드웨어만으로 메모리 가상화를 구현할 수는 없다. 운영체제는 메모리의 빈 공간과 사용중인 공간을 항상 기록해두어야 한다.  
+VM을 통한 abstraction을 위해서는 주소변환이 필요하다. 주소변환에 효율성을 높이는 동시에 protection(control)을 유지하기 위해서는 하드웨어 지원이 필요하다. 처음에는 몇개의 레지스터만 사용하는 정도부터 TLB, Page table 등 점차 복잡한 하드웨어 자원들을 활용하게 된다. 하드웨어의 도움들을 받지만 하드웨어만으로 메모리 가상화를 구현할 수는 없다. with hw support, os enables memory abtraction through virtual memeory. 운영체제는 메모리의 빈 공간과 사용중인 공간을 항상 기록해두어야 한다.  
 
 ## Notice
 
