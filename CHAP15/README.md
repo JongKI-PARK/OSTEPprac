@@ -1,7 +1,9 @@
-# Mechanism : Address Translation
+# Mechanism : Address Translation  
 
 Using Base-Bound(Limit) register.  
-![title](){: width="" height=""}  
+<img src= "https://github.com/JongKI-PARK/OSTEPprac/blob/main/CHAP15/image/chap15-1.png" width="50%" height="50%">  
+
+(Source : https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf)  
 
 Address translation is required for abstraction through VM. Hardware support is required to improve the efficiency of address translation while maintaining control. In the beginning, only a few registers are used, and complex hardware resources such as TLB and page table are gradually used. Hardware helps, but hardware alone is not enough. With hw support, os enables memory abstraction through virtual memeory. The operating system has three main roles : memory management that allocates memory for new processes and transfers the memory of terminated processes, register exchange used for address translation during context switch, and exception handling routine.  
 An important thing here is that memory translation is done without the intervention of the operating system. This is the same basic approach of Limited Direct Execution (LBA). However, if there is an incorrect approach, the operating system should intervene.  
@@ -111,15 +113,15 @@ See more details about this program in https://github.com/remzi-arpacidusseau/os
     VA  3: 0x00000043 (decimal:   67) --> PA or segmentation violation?
     VA  4: 0x0000000d (decimal:   13) --> PA or segmentation violation?
   ```
-  VA 0 :  
-  VA 1 :   
-  VA 2 :  
-  VA 3 :  
-  VA 4 :  
+  VA 0 : Invalid  
+  VA 1 : Invalid  
+  VA 2 : Invalid  
+  VA 3 : Valid (Physical Address : 0x000022d4 + 0x00000043 = 0x00002317)  
+  VA 4 : Valid (Physical Address : 0x000022d4 + 0x00000043 = 0x000022e1)  
 
-<br><br><br>
+<br><br>
 
-**2. Run with these flags: `-s 0 -n 10`. What value do you have set -l (the bounds register) to in order to ensure that all the generated virtual addresses are within bounds?**
+> **2. Run with these flags: `-s 0 -n 10`. What value do you have set -l (the bounds register) to in order to ensure that all the generated virtual addresses are within bounds?**
 
 A : The result with -s 0 -n 10 flags 
   ``` 
@@ -146,11 +148,11 @@ A : The result with -s 0 -n 10 flags
     VA  9: 0x00000204 (decimal:  516) --> SEGMENTATION VIOLATION
   ```
 
-If all these virtual addresses to be valid, the value for the flag -l needs to be bigger than the maximum offset 929.
+If all these virtual addresses to be valid, the value for the flag -l needs to be bigger than the maximum offset 929.  
 
-<br><br><br>
+<br><br>
 
-**3. Run with these flags: `-s 1 -n 10 -l 100`. What is the maximum value that base can be set to, such that the address space still fits into physical memory in its entirety?**
+> **3. Run with these flags: `-s 1 -n 10 -l 100`. What is the maximum value that base can be set to, such that the address space still fits into physical memory in its entirety?**
 
 A : The result with -s 1 -n 10 -l 100 flags
   ```  
@@ -176,10 +178,10 @@ A : The result with -s 1 -n 10 -l 100 flags
     VA  9: 0x00000357 (decimal:  855) --> PA or segmentation violation?
   ```
   
+<br><br>
+
+> **4. Run some of the same problems above, but with larger address spaces (-a) and physical memories (-p).**
+
 <br><br><br>
 
-**4. Run some of the same problems above, but with larger address spaces (-a) and physical memories (-p).**
-
-<br><br><br>
-
-**5. What fraction of randomly-generated virtual addresses are valid, as a function of the value of the bounds register? Make a graph from running with different random seeds, with limit values ranging from 0 up to the maximum size of the address space.**
+> **5. What fraction of randomly-generated virtual addresses are valid, as a function of the value of the bounds register? Make a graph from running with different random seeds, with limit values ranging from 0 up to the maximum size of the address space.**
