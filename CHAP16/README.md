@@ -1,33 +1,18 @@
 
-# Notice
+# Segmentation
+
+If the entire address space is loaded into memory using the base and bound registers, a large unused space between the stack and the heap is wasted. The idea that emerged to solve this problem is Segmentation. Instead of having a single base bound value for each process, a base and bound value exist for each segment. Here, a segment is a contiguous address space with a specific length. As an example of a segment, four segments can be considered in the address space of a process: code, data, heap, and stack. The advantage of segmentation is that it is easy to share between multiple processes. When the same program is executed by different processes, the code part can be shared. Another advantage is that protection can be supported in units of segments. It is possible to set different permissions for each segment, such as making the code segment part read execure, and the heap part enabling read and write.  
+
+When setting the size of a segment, it can be set to a large size or a small size. They are called coarse grained segment size and fine grained segment size, respectively. If it is set to coarse grained, the amount of segments to be allocated for each process becomes smaller. (Give small chunks to large chunks. Usually, 4 segments are allocated for code, data, heap, and stack.) If fine grained is set, the number of segments increases. If the number of segments increases in this way, it cannot be managed with registers, but is managed with a segment table.  
+
+
+## Notice
 
 Source code `segmentation.py` is from https://github.com/remzi-arpacidusseau/ostep-homework/tree/master/vm-segmentation  
 See more details about this program in https://github.com/remzi-arpacidusseau/ostep-homework/blob/master/vm-segmentation/README.md  
 
-Visually, the address space looks like this:
 
-```
- --------------- virtual address 0
- |    seg0     |
- |             |
- |             |
- |-------------|
- |             |
- |             |
- |             |
- |             |
- |(unallocated)|
- |             |
- |             |
- |             |
- |-------------|
- |             |
- |    seg1     |
- |-------------| virtual address max (size of address space)
-```
-
-
-# Homework
+## Homework
 
 **1. First let’s use a tiny address space to translate some addresses. Here’s a simple set of parameters with a few different random seeds; can you translate the addresses?**
   ```
