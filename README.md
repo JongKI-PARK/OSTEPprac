@@ -28,7 +28,10 @@ Chapter13 problem 6, 7, 8 pmap????아직 정확히 모르겠음
 
 Chapter14 clear  나중에 mmap() 간단하게 사용해볼것 furthermore 부분에 추가하면 좋을 듯  
 
-Chapter15 3번부터 하면 됨  
+Chapter15 3번부터 하면 됨 개좆같은거 뭐를 계산하라는건지 알수가 있어야지 ㅆ  pass
+
+Chapter 16  
+
 
 ### Memory Virtualization
 Chapter 12 to Chapter24
