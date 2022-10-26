@@ -5,6 +5,7 @@ If the entire address space is loaded into memory using the base and bound regis
 
 When setting the size of a segment, it can be set to a large size or a small size. They are called coarse grained segment size and fine grained segment size, respectively. If it is set to coarse grained, the amount of segments to be allocated for each process becomes smaller. (Give small chunks to large chunks. Usually, 4 segments are allocated for code, data, heap, and stack.) If fine grained is set, the number of segments increases. If the number of segments increases in this way, it cannot be managed with registers, but is managed with a segment table.  
 
+Since the size of Segment is not constant, the problem of external fragmentation may occur.  
 
 ## Notice
 
