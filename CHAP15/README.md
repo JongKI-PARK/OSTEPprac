@@ -1,7 +1,7 @@
 # Mechanism : Address Translation  
 
 Using Base-Bound(Limit) register.  
-<img src= "https://github.com/JongKI-PARK/OSTEPprac/blob/main/CHAP15/image/chap15-1.png" width="50%" height="50%">  
+<img src= "https://github.com/JongKI-PARK/OSTEPprac/blob/main/Images/chap15-1.png" width="50%" height="50%">  
 
 
 Address translation is required for abstraction through VM. Hardware support is required to improve the efficiency of address translation while maintaining control. In the beginning, only a few registers are used, and complex hardware resources such as TLB and page table are gradually used. Hardware helps, but hardware alone is not enough. With hw support, os enables memory abstraction through virtual memeory. The operating system has three main roles : memory management that allocates memory for new processes and transfers the memory of terminated processes, register exchange used for address translation during context switch, and exception handling routine.  
