@@ -51,3 +51,5 @@ Chapter 35 to Chapter 46
 [3] Concepts of Programming languages 11th edition (Global edition), Robert W.Sebesta  
 [4] Computer Systems : A Programmer's Perspective  
 [5] 
+[6] https://stackoverflow.com/questions/18935446/program-received-signal-sigpipe-broken-pipe  
+
